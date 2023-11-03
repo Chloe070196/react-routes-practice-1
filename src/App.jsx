@@ -2,8 +2,9 @@ import { useState } from 'react';
 import { Route, Routes, Link } from 'react-router-dom';
 import { appsData, productsData } from './data.js';
 import Home from './pages/Home';
-import ProductsPage from './pages/Products';
+import Products from './pages/Products';
 import AppsPage from './pages/Apps/index.jsx';
+import ViewProducts from './pages/Viewproducts/index.jsx';
 import './App.css';
 
 export default function App() {
@@ -31,14 +32,23 @@ export default function App() {
         </nav>
       </header>
       <Routes>
+        <Route 
+          path="/" 
+          element={<Home />} 
+        />
         <Route
           path="/products"
-          element={<ProductsPage products={products} />}
+          element={<Products products={products} />}
         />
         <Route
           path='/apps'
-          element={<AppsPage apps={apps}/>}/>
-        <Route path="/" element={<Home />} />
+          element={<AppsPage apps={apps}/>}
+        />
+        <Route
+          path='/products/:product_id'
+          element={<ViewProducts/>}
+        />
+        
       </Routes>
     </div>
   );
